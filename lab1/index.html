@@ -69,14 +69,40 @@
     </div>
 
     <div>
-        <label for="file-path-input">File path:</label>
-        <input id="file-path-input"
+        <label for="directory-path-input">Directory path:</label>
+        <input id="directory-path-input"
                placeholder="C:\windows\temp"
                pattern="[A-Z]:(\\(windows|winnt|win|dos|msdos))(\\(\w)+)*"
                type="text"
                required/>
     </div>
 
+    <div>
+        <label for="file-path-input">File path:</label>
+        <input id="file-path-input"
+               placeholder="/etc/file"
+               pattern="/etc/(\w)+"
+               type="text"
+               required/>
+    </div>
+
+    <div>
+        <label for="ip-v6-input">IPv6:</label>
+        <input id="ip-v6-input"
+               placeholder="255.255.255.255"
+               pattern="(((\d)|([1-9]\d)|([1]\d\d)|([2][0-4]\d)|([2][5][0-5]))[.]){3}((\d)|([1-9]\d)|([1]\d\d)|([2][0-4]\d)|([2][5][0-5]))"
+               type="text"
+               maxlength="15"
+               required/>
+    </div>
+
+    <div>
+        <label for="phone-input">Phone number:</label>
+        <input id="phone-input"
+               placeholder="555 666 777"
+               type="tel"
+               required/>
+    </div>
 
 
 </div>
