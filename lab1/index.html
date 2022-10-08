@@ -13,7 +13,51 @@
         <label for="email-input">Email:</label>
         <input id="email-input"
                type="email"
-               placeholder="address@gamil.com"/>
+               placeholder="address@gamil.com"
+               required/>
+    </div>
+
+    <div>
+        <label for="postal-code-input">Postal code:</label>
+        <input id="postal-code-input"
+               placeholder="00-000"
+               pattern="\d{2}-\d{3}"
+               type="text"
+               size="6"
+               maxlength="6"
+               required/>
+    </div>
+
+    <div>
+        <label for="nip-input">NIP:</label>
+        <input id="nip-input"
+               placeholder="PL-000-00000-0"
+               pattern="[A-Z]{2}-\d{3}-\d{5}-\d"
+               type="text"
+               size="14"
+               maxlength="14"
+               required/>
+    </div>
+
+    <div>
+        <label for="id-number-input">Id number:</label>
+        <input id="id-number-input"
+               placeholder="ABC123456"
+               pattern="[A-Z]{3}\d{6}"
+               type="text"
+               size="9"
+               maxlength="9"
+               required/>
+    </div>
+
+    <div>
+        <label for="ip-v4-input">IPv4:</label>
+        <input id="ip-v4-input"
+               placeholder="255.255.255.255"
+               pattern="(((\d)|([1-9]\d)|([1]\d\d)|([2][0-4]\d)|([2][5][0-5]))[.]){3}((\d)|([1-9]\d)|([1]\d\d)|([2][0-4]\d)|([2][5][0-5]))"
+               type="text"
+               maxlength="15"
+               required/>
     </div>
 
 </div>
