@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css"/>
-    <title>Title</title>
+    <title>lab1</title>
+    <script src="script.js"></script>
 </head>
 <body>
 
@@ -31,8 +32,8 @@
     <div>
         <label for="nip-input">NIP:</label>
         <input id="nip-input"
-               placeholder="PL-000-00000-0"
-               pattern="[A-Z]{2}-\d{3}-\d{5}-\d"
+               placeholder="PL-000-000000-0"
+               pattern="[A-Z]{2}-\d{3}-\d{6}-\d"
                type="text"
                size="14"
                maxlength="14"
@@ -72,7 +73,7 @@
         <label for="directory-path-input">Directory path:</label>
         <input id="directory-path-input"
                placeholder="C:\windows\temp"
-               pattern="[A-Z]:(\\(windows|winnt|win|dos|msdos))(\\(\w)+)*"
+               pattern="[A-Za-z]:(\\(windows|winnt|win|dos|msdos))(\\(\w)+)*"
                type="text"
                required/>
     </div>
@@ -89,10 +90,9 @@
     <div>
         <label for="ip-v6-input">IPv6:</label>
         <input id="ip-v6-input"
-               placeholder="255.255.255.255"
-               pattern="(((\d)|([1-9]\d)|([1]\d\d)|([2][0-4]\d)|([2][5][0-5]))[.]){3}((\d)|([1-9]\d)|([1]\d\d)|([2][0-4]\d)|([2][5][0-5]))"
+               placeholder="2001:0db8:3c4d:0015:0000:0000:1a2f:1a2b"
+               pattern="([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}"
                type="text"
-               maxlength="15"
                required/>
     </div>
 
@@ -104,6 +104,7 @@
                required/>
     </div>
 
+    <button type="button" onclick="fillData()">Fill data</button>
 
 </div>
 
