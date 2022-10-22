@@ -132,6 +132,7 @@
         <label for="time-12-input">Time 12:</label>
         <input id="time-12-input"
                type="text"
+               pattern="^((0?[1-9])|([1][0-2])):[0-5]?\d[aApP][mM]$"
                placeholder="11:25AM"
                required/>
     </div>
@@ -140,6 +141,7 @@
         <label for="time-24-input">Time 24:</label>
         <input id="time-24-input"
                type="text"
+               pattern="^(([0-1]?\d)|([2][0-3])):[0-5]?\d$"
                placeholder="22:44"
                required/>
     </div>
