@@ -36,5 +36,19 @@ function check() {
 function initInput() {
     let todayDate = new Date();
     let weekday = todayDate.getDay();
+    if (weekday === 0) {
+        weekday = 7;
+    }
+
+    let startDate = new Date();
+    startDate.setDate(todayDate.getDate() - (weekday - 1));
+
+    let endDate = new Date();
+    endDate.setDate(todayDate.getDate() - (weekday - 5));
+
+    let dateInput = document.getElementById('current-week-date-input');
+    dateInput.setAttribute('min', startDate.toISOString());
+    dateInput.setAttribute('max', endDate.toISOString());
+
 
 }
