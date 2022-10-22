@@ -6,7 +6,7 @@
     <title>lab2</title>
     <script src="script.js"></script>
 </head>
-<body>
+<body onload="initInput()">
 
 <div class="inputs">
 
@@ -117,6 +117,13 @@
     <div>
         <label for="date-input">Date:</label>
         <input id="date-input"
+               type="date"
+               required/>
+    </div>
+
+    <div>
+        <label for="current-week-date-input">Current week date:</label>
+        <input id="current-week-date-input"
                type="date"
                required/>
     </div>

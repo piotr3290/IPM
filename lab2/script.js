@@ -32,3 +32,9 @@ function check() {
         input.setCustomValidity('invalid');
     }
 }
+
+function initInput() {
+    let todayDate = new Date();
+    let weekday = todayDate.getDay();
+
+}
