@@ -54,7 +54,7 @@ function getCurrentWeekMonday() {
     let result = new Date();
     result.setDate(todayDate.getDate() - (weekday - 1));
 
-    return result.toISOString().split('T')[0];
+    return getFormattedDate(result);
 }
 
 function getCurrentWeekFriday() {
@@ -67,5 +67,9 @@ function getCurrentWeekFriday() {
     let result = new Date();
     result.setDate(todayDate.getDate() - (weekday - 5));
 
-    return result.toISOString().split('T')[0];
+    return getFormattedDate(result);
+}
+
+function getFormattedDate(date){
+    return date.toISOString().split('T')[0];
 }
