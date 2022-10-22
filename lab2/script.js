@@ -47,8 +47,6 @@ function initInput() {
     endDate.setDate(todayDate.getDate() - (weekday - 5));
 
     let dateInput = document.getElementById('current-week-date-input');
-    dateInput.setAttribute('min', startDate.toISOString());
-    dateInput.setAttribute('max', endDate.toISOString());
-
-
+    dateInput.setAttribute('min', startDate.toISOString().split('T')[0]);
+    dateInput.setAttribute('max', endDate.toISOString().split('T')[0]);
 }
