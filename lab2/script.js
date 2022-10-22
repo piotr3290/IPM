@@ -26,7 +26,7 @@ function randomInt() {
 
 function check() {
     let input = document.getElementById('directory-path2-input');
-    if (input.value.match(/[A-Za-z]:(\\(windows|winnt|win|dos|msdos))(\\(\w)+)*/i)) {
+    if (input.value.match(/^[A-Za-z]:(\\(windows|winnt|win|dos|msdos))(\\(\w)+)*$/i)) {
         input.setCustomValidity('');
     } else {
         input.setCustomValidity('invalid');
