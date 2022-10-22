@@ -12,9 +12,9 @@ const data = [
     ['997', '+48 555 666 777'],
     ['2022-10-22', '2022-10-30'],
     [],
-    ['10:22AM','12:34PM'],
-    ['01:44','19:55'],
-    ['#e62b31','#34efc3'],
+    ['10:22AM', '12:34PM'],
+    ['01:44', '19:55'],
+    ['#e62b31', '#34efc3'],
 ];
 
 
@@ -54,4 +54,30 @@ function initInput() {
     let dateInput = document.getElementById('current-week-date-input');
     dateInput.setAttribute('min', startDate.toISOString().split('T')[0]);
     dateInput.setAttribute('max', endDate.toISOString().split('T')[0]);
+}
+
+function getThisWeekMonday() {
+    let todayDate = new Date();
+    let weekday = todayDate.getDay();
+    if (weekday === 0) {
+        weekday = 7;
+    }
+
+    let result = new Date();
+    result.setDate(todayDate.getDate() - (weekday - 1));
+
+    return result.toISOString().split('T')[0];
+}
+
+function getThisWeekFriday() {
+    let todayDate = new Date();
+    let weekday = todayDate.getDay();
+    if (weekday === 0) {
+        weekday = 7;
+    }
+
+    let result = new Date();
+    result.setDate(todayDate.getDate() - (weekday - 5));
+
+    return result.toISOString().split('T')[0];
 }
