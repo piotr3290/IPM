@@ -95,6 +95,9 @@ function drag(event) {
     let xChange = event.clientX - currentX;
     let yChange = event.clientY - currentY;
 
+    let platform = document.getElementById('area');
+    console.log(blockInBlock(dragBlock, platform));
+
     let blocks = document.querySelectorAll('.block');
     for (let block of blocks) {
         if (block !== dragBlock && collision(dragBlock, block, yChange, xChange)) {
@@ -117,6 +120,15 @@ function stopDragging(event) {
     currentX = null;
     currentY = null;
 
+}
+
+function blockInBlock(block1, block2, yChange, xChange) {
+    const blockDims1 = block1.getBoundingClientRect();
+    const blockDims2 = block2.getBoundingClientRect();
+
+    let result =  blockDims1.y + yChange > blockDims2.y && blockDims1.y + yChange + blockDims1.height < blockDims2.y + blockDims2.height
+       && blockDims1.x + xChange > blockDims2.x && blockDims1.x + xChange + blockDims1.width < blockDims2.x + blockDims2.width
+    return result
 }
 
 function collision(block1, block2, yChange, xChange) {
