@@ -93,11 +93,8 @@ function drag(event) {
 
     let blocks = document.querySelectorAll('.block');
     for (let block of blocks) {
-        if (block === dragBlock) {
-        } else {
-            if (collision(dragBlock, block, yChange, xChange)) {
-                return;
-            }
+        if (block !== dragBlock && collision(dragBlock, block, yChange, xChange)) {
+            return;
         }
     }
 
