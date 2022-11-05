@@ -62,3 +62,36 @@ function randomColor() {
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+document.addEventListener('mousedown', startDragging);
+document.addEventListener('mousemove', drag);
+document.addEventListener('mouseup', stopDragging);
+
+let dragBlock = null;
+let currentX = null;
+let currentY = null;
+
+function startDragging(event) {
+    if (!event.target.classList.contains('block')) {
+        return;
+    }
+    dragBlock = event.target;
+    dragBlock.classList.add('dragging');
+    currentX = event.clientX;
+    currentY = event.clientY;
+}
+
+function drag(event) {
+
+}
+
+function stopDragging(event) {
+    if (dragBlock == null) {
+        return;
+    }
+    dragBlock.classList.remove('dragging');
+    dragBlock = null;
+    currentX = null;
+    currentY = null;
+
+}
