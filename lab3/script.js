@@ -91,6 +91,16 @@ function drag(event) {
     let xChange = event.clientX - currentX;
     let yChange = event.clientY - currentY;
 
+    let blocks = document.querySelectorAll('.block');
+    for (let block of blocks) {
+        if (block === dragBlock) {
+        } else {
+            if (collision(dragBlock, block, yChange, xChange)) {
+                return;
+            }
+        }
+    }
+
     dragBlock.style.top = `${dragBlock.offsetTop + yChange}px`;
     dragBlock.style.left = `${dragBlock.offsetLeft + xChange}px`;
     currentX = event.clientX;
