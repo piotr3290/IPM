@@ -4,13 +4,17 @@ function initPage() {
 
     document.querySelectorAll('[draggable="true"]')
         .forEach(draggableElement => {
-            draggableElement.addEventListener('dragstart', handleStartDrag);
-            draggableElement.addEventListener('dragover', handleDragOver);
-            draggableElement.addEventListener('dragenter', handleEnterDrag);
-            draggableElement.addEventListener('dragleave', handleLeaveDrag);
-            draggableElement.addEventListener('dragend', handleEndDrag);
-            draggableElement.addEventListener('drop', handleDrop);
+            addDraggableEvents(draggableElement);
         });
+}
+
+function addDraggableEvents(draggableElement){
+    draggableElement.addEventListener('dragstart', handleStartDrag);
+    draggableElement.addEventListener('dragover', handleDragOver);
+    draggableElement.addEventListener('dragenter', handleEnterDrag);
+    draggableElement.addEventListener('dragleave', handleLeaveDrag);
+    draggableElement.addEventListener('dragend', handleEndDrag);
+    draggableElement.addEventListener('drop', handleDrop);
 }
 
 function handleStartDrag(event) {
@@ -134,5 +138,7 @@ function addToList(){
     let newElement = document.createElement('li');
     const newContent = document.createTextNode(inputValue);
     newElement.appendChild(newContent);
+    newElement.setAttribute('draggable','true');
+    addDraggableEvents(newElement);
     document.getElementById('draggable-list').appendChild(newElement);
 }
