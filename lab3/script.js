@@ -8,7 +8,7 @@ function initPage() {
         });
 }
 
-function addDraggableEvents(draggableElement){
+function addDraggableEvents(draggableElement) {
     draggableElement.addEventListener('dragstart', handleStartDrag);
     draggableElement.addEventListener('dragover', handleDragOver);
     draggableElement.addEventListener('dragenter', handleEnterDrag);
@@ -133,12 +133,24 @@ function collision(block1, block2, yChange, xChange) {
     return isColliding;
 }
 
-function addToList(){
+function addToList() {
     let inputValue = document.getElementById('input-list').value;
     let newElement = document.createElement('li');
     const newContent = document.createTextNode(inputValue);
+
+    let deleteButton = document.createElement('button');
+    deleteButton.onclick = event => deleteElement(event);
+    deleteButton.appendChild(document.createTextNode('x'));
+
     newElement.appendChild(newContent);
-    newElement.setAttribute('draggable','true');
+    newElement.appendChild(deleteButton);
+    newElement.setAttribute('draggable', 'true');
+
     addDraggableEvents(newElement);
+
     document.getElementById('draggable-list').appendChild(newElement);
+}
+
+function deleteElement(event) {
+    event.target.parentElement.remove();
 }
