@@ -134,7 +134,8 @@ function collision(block1, block2, yChange, xChange) {
 }
 
 function addToList() {
-    let inputValue = document.getElementById('input-list').value;
+    let inputList = document.getElementById('input-list');
+    let inputValue = inputList.value;
     let newElement = document.createElement('li');
     const newContent = document.createTextNode(inputValue);
 
@@ -149,6 +150,7 @@ function addToList() {
     addDraggableEvents(newElement);
 
     document.getElementById('draggable-list').appendChild(newElement);
+    inputList.value = null;
 }
 
 function deleteElement(event) {

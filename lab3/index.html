@@ -10,14 +10,28 @@
 
 <div id="content">
     <div id="list-container">
-        <input id="input-list" type="text"/>
-        <button onclick="addToList()">Dodaj</button>
+        <div id="list-tools">
+            <div>
+                <input id="input-list" type="text"/>
+                <button onclick="addToList()">Dodaj</button>
+            </div>
+        </div>
         <ol id="draggable-list">
-            <li draggable="true">Element 1<button onclick="deleteElement(event)">x</button></li>
-            <li draggable="true">Element 2<button onclick="deleteElement(event)">x</button></li>
-            <li draggable="true">Element 3<button onclick="deleteElement(event)">x</button></li>
-            <li draggable="true">Element 4<button onclick="deleteElement(event)">x</button></li>
-            <li draggable="true">Element 5<button onclick="deleteElement(event)">x</button></li>
+            <li draggable="true">Element 1
+                <button onclick="deleteElement(event)">x</button>
+            </li>
+            <li draggable="true">Element 2
+                <button onclick="deleteElement(event)">x</button>
+            </li>
+            <li draggable="true">Element 3
+                <button onclick="deleteElement(event)">x</button>
+            </li>
+            <li draggable="true">Element 4
+                <button onclick="deleteElement(event)">x</button>
+            </li>
+            <li draggable="true">Element 5
+                <button onclick="deleteElement(event)">x</button>
+            </li>
         </ol>
     </div>
 

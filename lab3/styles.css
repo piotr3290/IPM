@@ -62,3 +62,9 @@ li.dragging {
 .block.dragging{
     border: 2px solid black;
 }
+
+#list-tools{
+    margin-top: 2rem;
+    display: flex;
+    padding-left: 40px;
+}
