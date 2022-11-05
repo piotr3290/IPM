@@ -1,0 +1,8 @@
+.dragging {
+    opacity: 0.5;
+    background-color: cornflowerblue;
+}
+
+.dragging-over[draggable=true] {
+    border-top: 2px solid black;
+}
