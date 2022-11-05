@@ -3,7 +3,7 @@ body {
     padding: 0;
 }
 
-.dragging {
+li.dragging {
     opacity: 0.5;
     background-color: cornflowerblue;
 }
@@ -56,4 +56,8 @@ body {
     position: absolute;
     right: 10vw;
     bottom: 5vh;
+}
+
+.block.dragging{
+    border: 2px solid black;
 }
