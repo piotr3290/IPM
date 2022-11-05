@@ -37,7 +37,10 @@ function handleDragOver(event) {
 
 function handleDrop(event) {
     event.stopPropagation();
-
+    if (draggingElement !== event.target) {
+        let inputsElement = document.getElementById('draggable-list');
+        inputsElement.insertBefore(draggingElement, event.target);
+    }
     event.target.classList.remove('dragging-over');
 
     draggingElement = null;
