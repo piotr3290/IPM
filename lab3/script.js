@@ -129,3 +129,10 @@ function collision(block1, block2, yChange, xChange) {
     return isColliding;
 }
 
+function addToList(){
+    let inputValue = document.getElementById('input-list').value;
+    let newElement = document.createElement('li');
+    const newContent = document.createTextNode(inputValue);
+    newElement.appendChild(newContent);
+    document.getElementById('draggable-list').appendChild(newElement);
+}

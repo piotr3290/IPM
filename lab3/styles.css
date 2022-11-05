@@ -21,6 +21,7 @@ li.dragging {
 #list-container{
     height: 100%;
     width: 30%;
+    background-color: lightgreen;
 }
 
 #blocks-container{
