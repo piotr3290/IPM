@@ -46,3 +46,6 @@ function handleDrop(event) {
     draggingElement = null;
 }
 
+function generateBlock() {
+
+}
