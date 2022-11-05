@@ -29,7 +29,15 @@ body {
 }
 
 #resp {
-    height: 50%;
+    width: 50%;
+}
+
+#button{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 #area {
@@ -40,4 +48,12 @@ body {
 #tools {
     height: 20%;
     background-color: lightcoral;
+}
+
+.block {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    right: 10vw;
+    bottom: 5vh;
 }
