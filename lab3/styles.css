@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .dragging {
     opacity: 0.5;
     background-color: cornflowerblue;
@@ -5,4 +10,20 @@
 
 .dragging-over[draggable=true] {
     border-top: 2px solid black;
+}
+
+#content {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+
+#list-container{
+    height: 100%;
+    width: 30%;
+}
+
+#blocks-container{
+    height: 100%;
+    width: 70%;
 }
