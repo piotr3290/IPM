@@ -107,3 +107,18 @@ function stopDragging(event) {
     currentY = null;
 
 }
+
+function collision(block1, block2, yChange, xChange) {
+    const blockDims1 = block1.getBoundingClientRect();
+    const blockDims2 = block2.getBoundingClientRect();
+
+    const isColliding = !(
+        ((blockDims1.y + yChange + blockDims1.height) < (blockDims2.y)) ||
+        ((blockDims1.y + yChange) > (blockDims2.y + blockDims2.height)) ||
+        (((blockDims1.x + xChange) + blockDims1.width) < blockDims2.x) ||
+        ((blockDims1.x + xChange) > (blockDims2.x + blockDims2.width))
+    );
+
+    return isColliding;
+}
+
