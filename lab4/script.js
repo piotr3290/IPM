@@ -134,6 +134,7 @@ function saveData() {
     getData.onsuccess = function () {
 
         console.log(getData.result.data);
+        loadData();
 
     };
 }
