@@ -42,6 +42,7 @@ function initInput() {
     let dateInput = document.getElementById('current-week-date-input');
     dateInput.setAttribute('min', getCurrentWeekMonday());
     dateInput.setAttribute('max', getCurrentWeekFriday());
+    loadData();
 }
 
 function getCurrentWeekMonday() {
@@ -82,12 +83,11 @@ var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedD
 var open = indexedDB.open("MyDatabase", 1);
 
 // Create the schema
-open.onupgradeneeded = function() {
+open.onupgradeneeded = function () {
     var db = open.result;
     var store = db.createObjectStore("MyObjectStore", {keyPath: "id"});
     var index = store.createIndex("NameIndex", ["name.last", "name.first"]);
 };
-
 
 
 const fieldNames = ['email-input',
@@ -126,27 +126,37 @@ function saveData() {
     store.put({id: id, data: data});
 
 
-
     let getData = store.get(id);
 
 
-
-    getData.onsuccess = function() {
+    getData.onsuccess = function () {
 
         console.log(getData.result.data);
 
     };
 }
 
-function loadData(){
+function loadData() {
     var db = open.result;
 
     var tx = db.transaction("MyObjectStore", "readwrite");
 
     var store = tx.objectStore("MyObjectStore");
 
-    console.log(store.getAll());
+    console.log();
 
+    let dataList = document.getElementById('data-list');
+    let allRecords = store.getAll();
+    allRecords.onsuccess = function () {
+        console.log(allRecords.result);
+    };
+
+    // store.getAll().result.forEach(o => {
+    //     let el = document.createElement('li');
+    //     const newContent = document.createTextNode('s');
+    //     el.appendChild(newContent);
+    //     dataList.appendChild(el);
+    // })
 
 }
 
