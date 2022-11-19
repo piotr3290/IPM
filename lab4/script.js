@@ -143,20 +143,20 @@ function loadData() {
 
     var store = tx.objectStore("MyObjectStore");
 
-    console.log();
-
     let dataList = document.getElementById('data-list');
+
+
+
     let allRecords = store.getAll();
     allRecords.onsuccess = function () {
-        console.log(allRecords.result);
+        for (let i = 0; i < allRecords.result.length; i++) {
+            console.log(allRecords.result[i]);
+            let el = document.createElement('li');
+            const newContent = document.createTextNode('element');
+            el.appendChild(newContent);
+            dataList.appendChild(el);
+        }
     };
-
-    // store.getAll().result.forEach(o => {
-    //     let el = document.createElement('li');
-    //     const newContent = document.createTextNode('s');
-    //     el.appendChild(newContent);
-    //     dataList.appendChild(el);
-    // })
 
 }
 
