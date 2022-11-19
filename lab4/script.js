@@ -42,8 +42,6 @@ function initInput() {
     let dateInput = document.getElementById('current-week-date-input');
     dateInput.setAttribute('min', getCurrentWeekMonday());
     dateInput.setAttribute('max', getCurrentWeekFriday());
-
-    dbConnect();
 }
 
 function getCurrentWeekMonday() {
@@ -75,110 +73,80 @@ function getCurrentWeekFriday() {
 function getFormattedDate(date) {
     return date.toISOString().split('T')[0];
 }
-let db;
-function dbConnect() {
-    if (!('indexedDB' in window)) {
-        console.log("This browser doesn't support IndexedDB.");
-        return;
+
+
+// This works on all devices/browsers, and uses IndexedDBShim as a final fallback
+var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+
+// Open (or create) the database
+var open = indexedDB.open("MyDatabase", 1);
+
+// Create the schema
+open.onupgradeneeded = function() {
+    var db = open.result;
+    var store = db.createObjectStore("MyObjectStore", {keyPath: "id"});
+    var index = store.createIndex("NameIndex", ["name.last", "name.first"]);
+};
+
+
+
+const fieldNames = ['email-input',
+    'postal-code-input',
+    'nip-input',
+    'id-number-input',
+    'ip-v4-input',
+    'www-input',
+    'directory-path-input',
+    'directory-path2-input',
+    'file-path-input',
+    'ip-v6-input',
+    'phone-input',
+    'date-input',
+    'current-week-date-input',
+    'time-12-input',
+    'time-24-input',
+    'color-input'];
+
+function saveData() {
+
+    let data = {};
+
+    for (let fieldName of fieldNames) {
+        data[fieldName] = document.getElementById(fieldName).value;
     }
 
-    let idb = window.indexedDB;
-    let request = db.open('test-db1');
+    var db = open.result;
 
-    request.onerror = event => {
-        console.log("Error happened: ", event);
+    var tx = db.transaction("MyObjectStore", "readwrite");
+
+    var store = tx.objectStore("MyObjectStore");
+
+    let id = document.getElementById('email-input').value;
+
+    store.put({id: id, data: data});
+
+
+
+    let getData = store.get(id);
+
+
+
+    getData.onsuccess = function() {
+
+        console.log(getData.result.data);
+
     };
+}
 
-    request.onsuccess = event => {
-        db = event.target.result;
-        console.log("success");
-    };
+function loadData(){
+    var db = open.result;
 
-    request.onupgradeneeded = event => {
-        db = event.target.result;
+    var tx = db.transaction("MyObjectStore", "readwrite");
 
-        let objectStore = db.createObjectStore("name", {keyPath: 'myKey'});
-        // {myKey: 1, json: ""}
-        objectStore.createIndex("json", "json", { unique: false});
+    var store = tx.objectStore("MyObjectStore");
 
-        objectStore.transaction.oncomplete = event => {
-            let nameObjectStore = db.transaction("name", 'readwrite').objectStore('name');
-            const fields = ["email", "postal", "nip", "idcard", "ip", "www", "windirbig", "windir", "etcdir", "ipv6", "phonenb"];
-            let data = {};
-            for (let i of fields) {
-                data[i] = '';
-            }
-            nameObjectStore.add({myKey: "data", json: JSON.stringify(data)});
-        };
+    console.log(store.getAll());
 
-        console.log("upgradee");
-    }
 
 }
 
-function loaddata() {
-    var transaction = db.transaction(['name']);
-    var objectStore = transaction.objectStore('name');
-    var request = objectStore.get("data");
-    request.onerror = event => {
-        out.innerHTML = "error when getting data " + event.toString();
-    }
-
-    request.onsuccess = event => {
-        console.log("got data", request.result);
-        const fields = ["email", "postal", "nip", "idcard", "ip", "www", "windirbig", "windir", "etcdir", "ipv6", "phonenb"];
-        var queried_object = JSON.parse(request.result.json);
-        for (var i of fields) {
-            if (i in document.forms[0]) {
-                document.forms[0][i].value = queried_object[i];
-            }
-        }
-    }
-
-    transaction.oncomplete = event => {
-        console.log("All done");
-    };
-}
-
-function savedata() {
-    const fields = ["email", "postal", "nip", "idcard", "ip", "www", "windirbig", "windir", "etcdir", "ipv6", "phonenb"];
-    var dataDB = {}
-
-
-    let inputs = document.getElementsByTagName('input');
-    for (let i = 0; i < inputs.length; i++) {
-        dataDB[i] = inputs[i].value;
-    }
-
-    console.log("data", dataDB);
-
-    var transaction = db.transaction(['name'], 'readwrite');
-    var objectStore = transaction.objectStore('name');
-    var request = objectStore.get("data");
-
-    request.onerror = event => {
-        out.innerHTML = "error when getting data " + event.toString();
-    }
-
-    request.onsuccess = event => {
-        var stored_data = event.target.result;
-
-        console.log("got stored_data: ", stored_data);
-
-        stored_data.json = JSON.stringify(dataDB);
-
-        var requestUpdate = objectStore.put(stored_data);
-
-        requestUpdate.onerror = event => {
-            out.innerHTML = "error when updating data " + event.toString();
-        }
-
-        requestUpdate.onsuccess = event => {
-            console.log("updated data successfully");
-        }
-    }
-
-    transaction.oncomplete = event => {
-        console.log("All done");
-    };
-}
