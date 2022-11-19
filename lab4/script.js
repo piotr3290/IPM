@@ -82,8 +82,15 @@ var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedD
 // Open (or create) the database
 var open = indexedDB.open("MyDatabase", 1);
 
+open.onupgradeneeded = function() {
 
-var db1 = open.result;
+    let db = open.result;
+
+    let store = db.createObjectStore("MyObjectStore", {keyPath: "id"});
+
+};
+
+// var db1 = open.result;
 
 const fieldNames = ['email-input',
     'postal-code-input',
@@ -129,21 +136,10 @@ function saveData() {
         console.log(getData.result.data);
 
     };
-
-    tx.oncomplete = function() {
-        db.close();
-    };
 }
 
 function loadData() {
-    var db;
-
-    if(db1){
-        db = db1;
-
-    }else{
-        db = open.result;
-    }
+    var db = open.result;
 
     var tx = db.transaction("MyObjectStore", "readwrite");
 
@@ -153,21 +149,18 @@ function loadData() {
 
     const getAll = store.getAll();
 
+    while (dataList.firstChild) {
+        dataList.removeChild(dataList.firstChild);
+    }
+
     getAll.onsuccess = () => {
-
-        let ids = ''
-
         for (let id of getAll.result) {
 
-            ids += id['id'] + ' ';
             let el = document.createElement('li');
             const newContent = document.createTextNode(id.id);
             el.appendChild(newContent);
             dataList.appendChild(el);
         }
-
-
-//        alert('All possible IDs: ' + ids);
 
     };
 
