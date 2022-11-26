@@ -22,3 +22,26 @@ input:invalid {
     margin: 0.8rem 0;
     display: flex;
 }
+
+table, th, td {
+    border: 1px solid;
+}
+
+th:last-child, td:last-child {
+    border-right-width: 0;
+}
+
+tr:last-child td {
+    border-bottom-width: 0;
+}
+
+th, td {
+    padding: 5px 10px;
+    border-top-width: 0;
+    border-left-width: 0;
+}
+
+tbody tr:hover {
+    background-color: lightpink;
+    cursor: pointer;
+}
