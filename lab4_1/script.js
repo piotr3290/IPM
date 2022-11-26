@@ -92,7 +92,8 @@ open.onupgradeneeded = function () {
 
 // var db1 = open.result;
 
-const fieldNames = ['email-input',
+const fieldNames = [
+    'email-input',
     'postal-code-input',
     'nip-input',
     'id-number-input',
@@ -107,7 +108,8 @@ const fieldNames = ['email-input',
     'current-week-date-input',
     'time-12-input',
     'time-24-input',
-    'color-input'];
+    'color-input',
+];
 
 function saveData() {
 
@@ -157,17 +159,19 @@ function loadData() {
     getAll.onsuccess = () => {
         for (let id of getAll.result) {
 
-            let el = document.createElement('li');
+            let tr = document.createElement('tr');
+            let td = document.createElement('td');
             const newContent = document.createTextNode(id.id);
 
             let deleteButton = document.createElement('button');
             deleteButton.onclick = () => deleteElement(id.id);
             deleteButton.appendChild(document.createTextNode('x'));
 
-            el.appendChild(newContent);
-            el.appendChild(deleteButton);
-            el.onclick = () => loadToEdit(id.id);
-            dataList.appendChild(el);
+            td.appendChild(newContent);
+            tr.appendChild(td);
+            tr.appendChild(deleteButton);
+            tr.onclick = () => loadToEdit(id.id);
+            dataList.appendChild(tr);
         }
 
     };
