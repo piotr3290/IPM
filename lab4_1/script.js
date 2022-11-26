@@ -184,7 +184,7 @@ function loadData() {
 
             tr.appendChild(buttonTd);
 
-            // tr.onclick = () => loadToEdit(id.id);
+            tr.onclick = () => loadToEdit(id.id);
             dataList.appendChild(tr);
         }
 
