@@ -45,3 +45,9 @@ tbody tr:hover {
     background-color: lightpink;
     cursor: pointer;
 }
+
+table{
+    width:100%;
+    table-layout: fixed;
+    overflow-wrap: break-word;
+}
