@@ -1,20 +1,20 @@
 const data = [
-    ['test@gamil.com', 'test2@edu.p.lodz.pl'],
-    ['00-000', '23-958'],
-    ['PL-123-456789-8', 'PL-185-433389-3'],
-    ['ABC132456', 'EKG985587'],
-    ['125.98.0.63', '255.8.60.77'],
-    ['https://www.google.com/', 'https://www.microsoft.com/pl-pl'],
-    ['C:\\windows\\temp', 'd:\\msdos'],
-    ['C:\\WinDows\\temp', 'd:\\msdOs'],
-    ['/etc/passwd', '/etc/hosts'],
-    ['4344:1bba:bfb9:5d94:cbdd:80bb:b523:e823', '89e1:53a6:7a2a:e1d0:05f3:dc78:4fb9:22de'],
-    ['997', '+48 555 666 777'],
-    ['2022-10-22', '2022-10-30'],
-    [getCurrentWeekFriday(), getCurrentWeekMonday()],
-    ['10:22AM', '12:34PM'],
-    ['01:44', '19:55'],
-    ['#e62b31', '#34efc3'],
+    ['test@gamil.com', 'test2@edu.p.lodz.pl', 'piwro@wp.pl', 'abd@onet.pl', 'paniKrysia@gmail.com'],
+    ['00-000', '23-958', '65-987', '55-888', '66-456'],
+    ['PL-123-456789-8', 'PL-185-433389-3', 'PL-185-433389-3', 'PL-185-433389-3', 'PL-185-433389-3'],
+    ['ABC132456', 'EKG985587', 'EKG985587', 'EKG985587', 'EKG985587'],
+    ['125.98.0.63', '255.8.60.77', '255.8.60.77', '255.8.60.77', '255.8.60.77'],
+    ['https://www.google.com/', 'https://www.microsoft.com/pl-pl', 'https://www.microsoft.com/pl-pl', 'https://www.microsoft.com/pl-pl', 'https://www.microsoft.com/pl-pl'],
+    ['C:\\windows\\temp', 'd:\\msdos', 'd:\\msdos', 'd:\\msdos', 'd:\\msdos'],
+    ['C:\\WinDows\\temp', 'd:\\msdOs', 'd:\\msdOs', 'd:\\msdOs', 'd:\\msdOs'],
+    ['/etc/passwd', '/etc/hosts', '/etc/hosts', '/etc/hosts', '/etc/hosts'],
+    ['4344:1bba:bfb9:5d94:cbdd:80bb:b523:e823', '89e1:53a6:7a2a:e1d0:05f3:dc78:4fb9:22de', '89e1:53a6:7a2a:e1d0:05f3:dc78:4fb9:22de', '89e1:53a6:7a2a:e1d0:05f3:dc78:4fb9:22de', '89e1:53a6:7a2a:e1d0:05f3:dc78:4fb9:22de'],
+    ['997', '+48 555 666 777', '+48 555 666 777', '+48 555 666 777', '+48 555 666 777'],
+    ['2022-10-22', '2022-10-30', '2022-10-30', '2022-10-30', '2022-10-30'],
+    [getCurrentWeekFriday(), getCurrentWeekMonday(), getCurrentWeekMonday(), getCurrentWeekMonday(), getCurrentWeekMonday()],
+    ['10:22AM', '12:34PM', '12:34PM', '12:34PM', '12:34PM'],
+    ['01:44', '19:55', '19:55', '19:55', '19:55'],
+    ['#e62b31', '#34efc3', '#34efc3', '#34efc3', '#34efc3'],
 ];
 
 
@@ -26,7 +26,7 @@ function fillData() {
 }
 
 function randomInt() {
-    return Math.floor(Math.random() * (2));
+    return Math.floor(Math.random() * (5));
 }
 
 function check() {
