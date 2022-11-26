@@ -163,6 +163,7 @@ function loadData() {
 
             for (let field of fieldNames) {
                 let td = document.createElement('td');
+                td.setAttribute('title', id.data[field]);
                 let newContent = document.createTextNode(id.data[field]);
                 td.appendChild(newContent);
                 tr.appendChild(td);
