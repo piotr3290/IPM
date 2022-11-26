@@ -111,8 +111,9 @@ const fieldNames = [
     'color-input',
 ];
 
-function saveData() {
+function saveData(event) {
 
+    event.preventDefault();
     let data = {};
 
     for (let fieldName of fieldNames) {
