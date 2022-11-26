@@ -8,158 +8,177 @@
 </head>
 <body onload="initInput()">
 
-<div class="inputs">
+<form id="client-form" onsubmit="saveData(event);">
+    <div class="inputs">
 
-    <div>
-        <label for="email-input">Email:</label>
-        <input id="email-input"
-               type="email"
-               placeholder="address@gamil.com"
-               required/>
+        <div>
+            <label for="email-input">Email:</label>
+            <input id="email-input"
+                   form="client-form"
+                   type="email"
+                   placeholder="address@gamil.com"
+                   required/>
+        </div>
+
+        <div>
+            <label for="postal-code-input">Postal code:</label>
+            <input id="postal-code-input"
+                   form="client-form"
+                   placeholder="00-000"
+                   pattern="\d{2}-\d{3}"
+                   type="text"
+                   size="6"
+                   maxlength="6"
+                   required/>
+        </div>
+
+        <div>
+            <label for="nip-input">NIP:</label>
+            <input id="nip-input"
+                   form="client-form"
+                   placeholder="PL-000-000000-0"
+                   pattern="[A-Z]{2}-\d{3}-\d{6}-\d"
+                   type="text"
+                   size="14"
+                   maxlength="14"
+                   required/>
+        </div>
+
+        <div>
+            <label for="id-number-input">Id number:</label>
+            <input id="id-number-input"
+                   form="client-form"
+                   placeholder="ABC123456"
+                   pattern="[A-Z]{3}\d{6}"
+                   type="text"
+                   size="9"
+                   maxlength="9"
+                   required/>
+        </div>
+
+        <div>
+            <label for="ip-v4-input">IPv4:</label>
+            <input id="ip-v4-input"
+                   form="client-form"
+                   placeholder="255.255.255.255"
+                   pattern="(((\d)|([1-9]\d)|([1]\d\d)|([2][0-4]\d)|([2][5][0-5]))[.]){3}((\d)|([1-9]\d)|([1]\d\d)|([2][0-4]\d)|([2][5][0-5]))"
+                   type="text"
+                   maxlength="15"
+                   required/>
+        </div>
+
+        <div>
+            <label for="www-input">Website:</label>
+            <input id="www-input"
+                   form="client-form"
+                   placeholder="https://www.google.com/"
+                   pattern="^[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,}\.[a-z]{2,}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$"
+                   type="text"
+                   required/>
+        </div>
+
+        <div>
+            <label for="directory-path-input">Directory path:</label>
+            <input id="directory-path-input"
+                   form="client-form"
+                   placeholder="C:\windows\temp"
+                   pattern="^[A-Za-z]:(\\(windows|winnt|win|dos|msdos))(\\(\w)+)*$"
+                   type="text"
+                   required/>
+        </div>
+
+        <div>
+            <label for="directory-path2-input">Directory path:</label>
+            <input id="directory-path2-input"
+                   form="client-form"
+                   placeholder="C:\WindOws\temp"
+                   type="text"
+                   required
+                   onchange="check()"
+                   oninput="check()"/>
+        </div>
+
+        <div>
+            <label for="file-path-input">File path:</label>
+            <input id="file-path-input"
+                   form="client-form"
+                   placeholder="/etc/file"
+                   pattern="/etc/(\w)+"
+                   type="text"
+                   required/>
+        </div>
+
+        <div>
+            <label for="ip-v6-input">IPv6:</label>
+            <input id="ip-v6-input"
+                   form="client-form"
+                   placeholder="2001:0db8:3c4d:0015:0000:0000:1a2f:1a2b"
+                   pattern="([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}"
+                   type="text"
+                   required/>
+        </div>
+
+        <div>
+            <label for="phone-input">Phone number:</label>
+            <input id="phone-input"
+                   form="client-form"
+                   placeholder="555 666 777"
+                   type="tel"
+                   required/>
+        </div>
+
+        <div>
+            <label for="date-input">Date:</label>
+            <input id="date-input"
+                   form="client-form"
+                   type="date"
+                   required/>
+        </div>
+
+        <div>
+            <label for="current-week-date-input">Current week date:</label>
+            <input id="current-week-date-input"
+                   form="client-form"
+                   type="date"
+                   required/>
+        </div>
+
+        <div>
+            <label for="time-12-input">Time 12:</label>
+            <input id="time-12-input"
+                   form="client-form"
+                   type="text"
+                   pattern="^((0?[1-9])|([1][0-2])):[0-5]?\d[aApP][mM]$"
+                   placeholder="11:25AM"
+                   required/>
+        </div>
+
+        <div>
+            <label for="time-24-input">Time 24:</label>
+            <input id="time-24-input"
+                   form="client-form"
+                   type="text"
+                   pattern="^(([0-1]?\d)|([2][0-3])):[0-5]?\d$"
+                   placeholder="22:44"
+                   required/>
+        </div>
+
+
+        <div>
+            <label for="color-input">Color:</label>
+            <input form="client-form"
+                   id="color-input"
+                   type="color"
+                   required/>
+        </div>
+
+        <button type="button" onclick="fillData()">Dane losowe</button>
+        <button type="submit">Save</button>
+
+        <div></div>
     </div>
-
-    <div>
-        <label for="postal-code-input">Postal code:</label>
-        <input id="postal-code-input"
-               placeholder="00-000"
-               pattern="\d{2}-\d{3}"
-               type="text"
-               size="6"
-               maxlength="6"
-               required/>
-    </div>
-
-    <div>
-        <label for="nip-input">NIP:</label>
-        <input id="nip-input"
-               placeholder="PL-000-000000-0"
-               pattern="[A-Z]{2}-\d{3}-\d{6}-\d"
-               type="text"
-               size="14"
-               maxlength="14"
-               required/>
-    </div>
-
-    <div>
-        <label for="id-number-input">Id number:</label>
-        <input id="id-number-input"
-               placeholder="ABC123456"
-               pattern="[A-Z]{3}\d{6}"
-               type="text"
-               size="9"
-               maxlength="9"
-               required/>
-    </div>
-
-    <div>
-        <label for="ip-v4-input">IPv4:</label>
-        <input id="ip-v4-input"
-               placeholder="255.255.255.255"
-               pattern="(((\d)|([1-9]\d)|([1]\d\d)|([2][0-4]\d)|([2][5][0-5]))[.]){3}((\d)|([1-9]\d)|([1]\d\d)|([2][0-4]\d)|([2][5][0-5]))"
-               type="text"
-               maxlength="15"
-               required/>
-    </div>
-
-    <div>
-        <label for="www-input">Website:</label>
-        <input id="www-input"
-               placeholder="https://www.google.com/"
-               pattern="^[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,}\.[a-z]{2,}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$"
-               type="text"
-               required/>
-    </div>
-
-    <div>
-        <label for="directory-path-input">Directory path:</label>
-        <input id="directory-path-input"
-               placeholder="C:\windows\temp"
-               pattern="^[A-Za-z]:(\\(windows|winnt|win|dos|msdos))(\\(\w)+)*$"
-               type="text"
-               required/>
-    </div>
-
-    <div>
-        <label for="directory-path2-input">Directory path:</label>
-        <input id="directory-path2-input"
-               placeholder="C:\WindOws\temp"
-               type="text"
-               required
-               onchange="check()"
-               oninput="check()"/>
-    </div>
-
-    <div>
-        <label for="file-path-input">File path:</label>
-        <input id="file-path-input"
-               placeholder="/etc/file"
-               pattern="/etc/(\w)+"
-               type="text"
-               required/>
-    </div>
-
-    <div>
-        <label for="ip-v6-input">IPv6:</label>
-        <input id="ip-v6-input"
-               placeholder="2001:0db8:3c4d:0015:0000:0000:1a2f:1a2b"
-               pattern="([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}"
-               type="text"
-               required/>
-    </div>
-
-    <div>
-        <label for="phone-input">Phone number:</label>
-        <input id="phone-input"
-               placeholder="555 666 777"
-               type="tel"
-               required/>
-    </div>
-
-    <div>
-        <label for="date-input">Date:</label>
-        <input id="date-input"
-               type="date"
-               required/>
-    </div>
-
-    <div>
-        <label for="current-week-date-input">Current week date:</label>
-        <input id="current-week-date-input"
-               type="date"
-               required/>
-    </div>
-
-    <div>
-        <label for="time-12-input">Time 12:</label>
-        <input id="time-12-input"
-               type="text"
-               pattern="^((0?[1-9])|([1][0-2])):[0-5]?\d[aApP][mM]$"
-               placeholder="11:25AM"
-               required/>
-    </div>
-
-    <div>
-        <label for="time-24-input">Time 24:</label>
-        <input id="time-24-input"
-               type="text"
-               pattern="^(([0-1]?\d)|([2][0-3])):[0-5]?\d$"
-               placeholder="22:44"
-               required/>
-    </div>
-
-
-    <div>
-        <label for="color-input">Color:</label>
-        <input id="color-input"
-               type="color"
-               required/>
-    </div>
-
-    <button type="button" onclick="fillData()">Dane losowe</button>
-    <button type="button" onclick="saveData()">save</button>
-
-    <div></div>
-
+</form>
+<div>
     <table>
         <thead>
         <tr>
