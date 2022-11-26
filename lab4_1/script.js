@@ -160,8 +160,14 @@ function loadData() {
         for (let id of getAll.result) {
 
             let tr = document.createElement('tr');
-            let td = document.createElement('td');
-            const newContent = document.createTextNode(id.id);
+
+            for (let field of fieldNames) {
+                let td = document.createElement('td');
+                let newContent = document.createTextNode(id.data[field]);
+                td.appendChild(newContent);
+                tr.appendChild(td);
+            }
+
 
             let editButton = document.createElement('button');
             editButton.onclick = () => loadToEdit(id.id);
@@ -175,12 +181,10 @@ function loadData() {
             buttonTd.appendChild(editButton);
             buttonTd.appendChild(deleteButton);
 
-            td.appendChild(newContent);
-            tr.appendChild(td);
 
             tr.appendChild(buttonTd);
 
-           // tr.onclick = () => loadToEdit(id.id);
+            // tr.onclick = () => loadToEdit(id.id);
             dataList.appendChild(tr);
         }
 
