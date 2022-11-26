@@ -163,14 +163,24 @@ function loadData() {
             let td = document.createElement('td');
             const newContent = document.createTextNode(id.id);
 
+            let editButton = document.createElement('button');
+            editButton.onclick = () => loadToEdit(id.id);
+            editButton.appendChild(document.createTextNode('Load'));
+
             let deleteButton = document.createElement('button');
             deleteButton.onclick = () => deleteElement(id.id);
             deleteButton.appendChild(document.createTextNode('x'));
 
+            let buttonTd = document.createElement('td');
+            buttonTd.appendChild(editButton);
+            buttonTd.appendChild(deleteButton);
+
             td.appendChild(newContent);
             tr.appendChild(td);
-            tr.appendChild(deleteButton);
-            tr.onclick = () => loadToEdit(id.id);
+
+            tr.appendChild(buttonTd);
+
+           // tr.onclick = () => loadToEdit(id.id);
             dataList.appendChild(tr);
         }
 
