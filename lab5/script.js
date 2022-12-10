@@ -142,6 +142,8 @@ function saveData(event) {
     };
 }
 
+let search;
+
 function loadData() {
     var db = open.result;
 
@@ -159,6 +161,19 @@ function loadData() {
 
     getAll.onsuccess = () => {
         for (let id of getAll.result) {
+
+            let isFound = false;
+
+            for (let field of fieldNames) {
+                if (search == null || String.valueOf(id.data[field]).includes(search)) {
+                    isFound = true;
+                    break;
+                }
+            }
+
+            if (!isFound) {
+                continue;
+            }
 
             let tr = document.createElement('tr');
 
