@@ -144,6 +144,12 @@ function saveData(event) {
 
 let search;
 
+function searchChange() {
+    console.log(event.target.value);
+    // search = event.target.value;
+    loadData();
+}
+
 function loadData() {
     var db = open.result;
 
