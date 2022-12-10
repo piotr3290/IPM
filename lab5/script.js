@@ -171,7 +171,7 @@ function loadData() {
             let isFound = false;
 
             for (let field of fieldNames) {
-                if (search == null || String.valueOf(id.data[field]).includes(search)) {
+                if (search == null || ((String)(id.data[field])).includes(search)) {
                     isFound = true;
                     break;
                 }
