@@ -90,8 +90,6 @@ open.onupgradeneeded = function () {
 
 };
 
-// var db1 = open.result;
-
 const fieldNames = [
     'email-input',
     'postal-code-input',
@@ -120,11 +118,11 @@ function saveData(event) {
         data[fieldName] = document.getElementById(fieldName).value;
     }
 
-    var db = open.result;
+    let db = open.result;
 
-    var tx = db.transaction("MyObjectStore", "readwrite");
+    let tx = db.transaction("MyObjectStore", "readwrite");
 
-    var store = tx.objectStore("MyObjectStore");
+    let store = tx.objectStore("MyObjectStore");
 
     let id = document.getElementById('email-input').value;
 
@@ -150,11 +148,11 @@ function searchChange() {
 }
 
 function loadData() {
-    var db = open.result;
+    let db = open.result;
 
-    var tx = db.transaction("MyObjectStore", "readwrite");
+    let tx = db.transaction("MyObjectStore", "readwrite");
 
-    var store = tx.objectStore("MyObjectStore");
+    let store = tx.objectStore("MyObjectStore");
 
     let dataList = document.getElementById('data-list');
 
@@ -215,11 +213,11 @@ function loadData() {
 }
 
 function deleteElement(id) {
-    var db = open.result;
+    let db = open.result;
 
-    var tx = db.transaction("MyObjectStore", "readwrite");
+    let tx = db.transaction("MyObjectStore", "readwrite");
 
-    var store = tx.objectStore("MyObjectStore");
+    let store = tx.objectStore("MyObjectStore");
 
     store.delete(id);
 
@@ -229,11 +227,11 @@ function deleteElement(id) {
 }
 
 function loadToEdit(id) {
-    var db = open.result;
+    let db = open.result;
 
-    var tx = db.transaction("MyObjectStore", "readwrite");
+    let tx = db.transaction("MyObjectStore", "readwrite");
 
-    var store = tx.objectStore("MyObjectStore");
+    let store = tx.objectStore("MyObjectStore");
 
     let element = store.get(id);
 
