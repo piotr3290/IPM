@@ -1,4 +1,4 @@
-input {
+.form-input {
     width: 20rem;
 }
 
@@ -6,11 +6,11 @@ label {
     width: 10rem;
 }
 
-input:valid {
+.form-input:valid {
     border: green solid 1px;
 }
 
-input:invalid {
+.form-input:invalid {
     border: red solid 1px;
 }
 
@@ -50,4 +50,9 @@ table{
     width:100%;
     table-layout: fixed;
     overflow-wrap: break-word;
+}
+
+#search-input{
+    margin-bottom: 16px;
+    width: 50%;
 }
