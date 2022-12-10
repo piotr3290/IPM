@@ -19,7 +19,7 @@ const data = [
 
 
 function fillData() {
-    let inputs = document.getElementsByTagName('input');
+    let inputs = document.getElementsByClassName('form-input');
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].value = data[i][randomInt()];
     }
@@ -241,7 +241,7 @@ function loadToEdit(id) {
     element.onsuccess = () => {
         let el = element.result.data;
 
-        let inputs = document.getElementsByTagName('input');
+        let inputs = document.getElementsByClassName('form-input');
         for (let input of inputs) {
             input.value = el[input.id];
         }
