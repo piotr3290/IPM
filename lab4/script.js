@@ -82,7 +82,7 @@ var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedD
 // Open (or create) the database
 var open = indexedDB.open("MyDatabase", 1);
 
-open.onupgradeneeded = function() {
+open.onupgradeneeded = function () {
 
     let db = open.result;
 
@@ -159,10 +159,50 @@ function loadData() {
 
             let el = document.createElement('li');
             const newContent = document.createTextNode(id.id);
+
+            let deleteButton = document.createElement('button');
+            deleteButton.onclick = () => deleteElement(id.id);
+            deleteButton.appendChild(document.createTextNode('x'));
+
             el.appendChild(newContent);
+            el.appendChild(deleteButton);
+            el.onclick = () => loadToEdit(id.id);
             dataList.appendChild(el);
         }
 
     };
 
+}
+
+function deleteElement(id) {
+    var db = open.result;
+
+    var tx = db.transaction("MyObjectStore", "readwrite");
+
+    var store = tx.objectStore("MyObjectStore");
+
+    store.delete(id);
+
+    tx.oncomplete = () => {
+        loadData();
+    };
+}
+
+function loadToEdit(id) {
+    var db = open.result;
+
+    var tx = db.transaction("MyObjectStore", "readwrite");
+
+    var store = tx.objectStore("MyObjectStore");
+
+    let element = store.get(id);
+
+    element.onsuccess = () => {
+        let el = element.result.data;
+
+        let inputs = document.getElementsByTagName('input');
+        for (let input of inputs) {
+            input.value = el[input.id];
+        }
+    };
 }
