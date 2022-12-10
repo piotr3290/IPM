@@ -145,8 +145,8 @@ function saveData(event) {
 let search;
 
 function searchChange() {
-    console.log(event.target.value);
-    // search = event.target.value;
+    search = document.getElementById('search-input').value;
+    console.log(search);
     loadData();
 }
 
