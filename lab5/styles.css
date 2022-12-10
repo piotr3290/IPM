@@ -56,3 +56,7 @@ table{
     margin-bottom: 16px;
     width: 50%;
 }
+
+.search-input-container label, .search-input-container input{
+    display: block;
+}
