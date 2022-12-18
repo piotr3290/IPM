@@ -189,7 +189,7 @@ function loadData() {
             for (let field of fieldNames) {
                 let td = document.createElement('td');
 
-                let value = id.data[field] === undefined ? '' : id.data[field];
+                let value = id.data[field] == null ? '' : id.data[field];
 
                 td.setAttribute('title', value);
                 let newContent = document.createTextNode(value);
@@ -249,7 +249,7 @@ function loadToEdit(id) {
 
         let inputs = document.getElementsByClassName('form-input');
         for (let input of inputs) {
-            input.value = el[input.id];
+            input.value = el[input.id] == null ? '' : el[input.id];
         }
     };
 }
