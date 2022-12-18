@@ -188,8 +188,11 @@ function loadData() {
 
             for (let field of fieldNames) {
                 let td = document.createElement('td');
-                td.setAttribute('title', id.data[field]);
-                let newContent = document.createTextNode(id.data[field]);
+
+                let value = id.data[field] === undefined ? '' : id.data[field];
+
+                td.setAttribute('title', value);
+                let newContent = document.createTextNode(value);
                 td.appendChild(newContent);
                 tr.appendChild(td);
             }
