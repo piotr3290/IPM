@@ -1,4 +1,7 @@
 const data = [
+    ['Jan', 'Hanna', 'Witold', 'Piotr', 'Krystyna'],
+    ['Górniak', 'Grzyb', 'Wróbel', 'Byk', 'Waga'],
+    ['Google', 'Microsoft', 'Deloitte', 'Accenture', 'Sony'],
     ['test@gamil.com', 'test2@edu.p.lodz.pl', 'piwro@wp.pl', 'abd@onet.pl', 'paniKrysia@gmail.com'],
     ['00-000', '23-958', '65-987', '55-888', '66-456'],
     ['PL-123-456789-8', 'PL-155-430989-3', 'PL-090-400009-5', 'PL-995-987389-7', 'PL-545-455889-0'],
@@ -91,6 +94,9 @@ open.onupgradeneeded = function () {
 };
 
 const fieldNames = [
+    'first-name-input',
+    'last-name-input',
+    'company-input',
     'email-input',
     'postal-code-input',
     'nip-input',
